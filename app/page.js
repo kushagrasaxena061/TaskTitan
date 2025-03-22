@@ -36,7 +36,6 @@ const features = [
 export default function Home() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
       <section className="container mx-auto py-20 text-center">
         <h1 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold gradient-title pb-6 flex flex-col">
           Streamline Your Workflow <br />
@@ -58,7 +57,6 @@ export default function Home() {
         </Link>
       </section>
 
-      {/* Features Section */}
       <section id="features" className="bg-gray-900 py-20 px-5">
         <div className="container mx-auto">
           <h3 className="text-3xl font-bold mb-12 text-center">Key Features</h3>
@@ -78,10 +76,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Companies Carousel */}
 
 
-      {/* CTA Section */}
       <section className="py-20 text-center px-5">
         <div className="container mx-auto">
           <h3 className="text-3xl font-bold mb-6">
