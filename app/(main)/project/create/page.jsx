@@ -46,7 +46,6 @@ export default function CreateProjectPage() {
       alert("Only organization admins can create projects");
       return;
     }
-
     createProjectFn(data);
   };
 
@@ -54,14 +53,12 @@ export default function CreateProjectPage() {
     if (project) router.push(`/project/${project.id}`);
   }, [loading]);
 
-  if (!isOrgLoaded || !isUserLoaded) {
-    return null;
-  }
+  if (!isOrgLoaded || !isUserLoaded) return null;
 
   if (!isAdmin) {
     return (
-      <div className="flex flex-col gap-2 items-center">
-        <span className="text-2xl gradient-title">
+      <div className="flex flex-col gap-4 items-center justify-center min-h-[60vh] text-center">
+        <span className="text-2xl font-semibold bg-gradient-to-r from-pink-500 to-purple-500 text-transparent bg-clip-text">
           Oops! Only Admins can create projects.
         </span>
         <OrgSwitcher />
@@ -70,62 +67,66 @@ export default function CreateProjectPage() {
   }
 
   return (
-    <div className="container mx-auto py-10">
-      <h1 className="text-6xl text-center font-bold mb-8 gradient-title">
+    <div className="container max-w-2xl mx-auto py-12 px-6 rounded-xl bg-[#121220] shadow-2xl border border-slate-800 mt-16">
+      <h1 className="text-3xl font-bold text-center mb-10 bg-gradient-to-r from-purple-500 via-purple-200 to-purple-500 text-transparent bg-clip-text">
         Create New Project
       </h1>
 
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col space-y-4"
-      >
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col space-y-6">
         <div>
           <Input
             id="name"
             {...register("name")}
-            className="bg-slate-950"
+            className="bg-slate-800 border border-slate-700 focus:ring-2 focus:ring-slate-600"
             placeholder="Project Name"
           />
           {errors.name && (
-            <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
+            <p className="text-red-400 text-sm mt-1">{errors.name.message}</p>
           )}
         </div>
+
         <div>
           <Input
             id="key"
             {...register("key")}
-            className="bg-slate-950"
+            className="bg-slate-800 border border-slate-700 focus:ring-2 focus:ring-slate-600"
             placeholder="Project Key (Ex: RCYT)"
           />
           {errors.key && (
-            <p className="text-red-500 text-sm mt-1">{errors.key.message}</p>
+            <p className="text-red-400 text-sm mt-1">{errors.key.message}</p>
           )}
         </div>
+
         <div>
           <Textarea
             id="description"
             {...register("description")}
-            className="bg-slate-950 h-28"
+            className="bg-slate-800 border border-slate-700 h-32 resize-none focus:ring-2 focus:ring-slate-600"
             placeholder="Project Description"
           />
           {errors.description && (
-            <p className="text-red-500 text-sm mt-1">
+            <p className="text-red-400 text-sm mt-1">
               {errors.description.message}
             </p>
           )}
         </div>
+
         {loading && (
-          <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />
+          <BarLoader className="mb-4" width={"100%"} color="#a3a3a3" />
         )}
+
         <Button
           type="submit"
           size="lg"
           disabled={loading}
-          className="bg-blue-500 text-white"
+          className="bg-purple-700 hover:bg-purple-600 text-white transition-all"
         >
           {loading ? "Creating..." : "Create Project"}
         </Button>
-        {error && <p className="text-red-500 mt-2">{error.message}</p>}
+
+        {error && (
+          <p className="text-red-400 mt-2 text-center">{error.message}</p>
+        )}
       </form>
     </div>
   );

@@ -12,31 +12,43 @@ async function Header() {
   await checkUser();
 
   return (
-    <header className="container mx-auto">
-      <nav className="py-6 px-4 flex justify-between items-center">
-        <Link href="/">
-          <h1 className="text-2xl font-bold">
+    <header className="bg-gradient-to-b from-[#121010] to-[#121220] shadow-lg border-b border-gray-600">
+      <nav className="container mx-auto py-4 px-4 flex justify-between items-center">
+        <Link href="/" className="flex items-center gap-2">
+          <h1 className="text-2xl font-extrabold tracking-tight text-white">
             <Image
-              src={"/logo.png"}
+              src="/logo.png"
               alt="logo missing"
               width={300}
               height={100}
               className="h-10 w-auto object-contain"
+              priority
             />
           </h1>
         </Link>
+
         <div className="flex items-center gap-4">
           <Link href="/project/create">
-            <Button variant="destructive" className="flex items-center gap-2">
+            <Button
+              variant="destructive"
+              className="flex items-center gap-2 hover:shadow-md transition-all hover:scale-105"
+            >
               <PenBox size={18} />
               <span className="hidden md:inline">Create Project</span>
             </Button>
           </Link>
+
           <SignedOut>
             <SignInButton forceRedirectUrl="/onboarding">
-              <Button variant="outline">Login</Button>
+              <Button
+                variant="outline"
+                className="border-purple-100 text-white hover:bg-purple-900/30 transition-all"
+              >
+                Login
+              </Button>
             </SignInButton>
           </SignedOut>
+
           <SignedIn>
             <UserMenu />
           </SignedIn>
