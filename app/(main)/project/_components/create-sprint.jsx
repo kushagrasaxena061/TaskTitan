@@ -65,11 +65,11 @@ export default function SprintCreationForm({
   return (
     <>
       <div className="flex justify-between">
-        <h1 className="text-5xl font-bold mb-8 gradient-title">
+        <h1 className="text-3xl font-semibold mb-8 gradient-title text-purple-300">
           {projectTitle}
         </h1>
         <Button
-          className="mt-2"
+          className="mt-2 bg-purple-700 text-white hover:bg-purple-600"
           onClick={() => setShowForm(!showForm)}
           variant={!showForm ? "default" : "destructive"}
         >

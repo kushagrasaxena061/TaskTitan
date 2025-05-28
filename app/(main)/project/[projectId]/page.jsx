@@ -12,7 +12,7 @@ export default async function ProjectPage({ params }) {
   }
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto bg-gradient-to-br from-[#141420] to-[#0b0b12] border border-purple-300 rounded-lg p-4 mt-10">
       <SprintCreationForm
         projectTitle={project.name}
         projectId={projectId}
